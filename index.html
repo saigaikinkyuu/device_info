@@ -49,17 +49,17 @@
             .then(response => response.json())
             .then(data => {
               attend = data.value;
-              console.log(data.value)
-              if(data.value === "Yes"){
+              console.log(data[0].value)
+              if(data[0].value === "Yes"){
                 document.getElementById("attend1").style.display = "block"
                 document.getElementById("attend2").style.display = "none"
                 document.getElementById("error").style.display = "none"
-              }else if(data.value === "No"){
+              }else if(data[0].value === "No"){
                 document.getElementById("attend1").style.display = "none"
                 document.getElementById("attend2").style.display = "block"
                 document.getElementById("error").style.display = "none"
               }else{
-                throw expression;
+                throw "Error";
               }  
             });
           if(num === 3){
