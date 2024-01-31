@@ -48,31 +48,19 @@
           fetch(url)
             .then(response => response.json())
             .then(data => {
-              if(attend !== data.value){
-                attend = data.value;
-                console.log(data.value)
-                if(data.value === "Yes"){
-                  document.getElementById("attend1").style.display = "block"
-                  document.getElementById("attend2").style.display = "none"
-                  document.getElementById("eew").style.display = "none"
-                  document.getElementById("tsunami1").style.display = "none"
-                  document.getElementById("tsunami2").style.display = "none"
-                  document.getElementById("quake").style.display = "none"
-                  document.getElementById("tsunamiNotifycation").style.display = "none"
-                  document.getElementById("error").style.display = "none"
-                }else if(data.value === "No"){
-                  document.getElementById("attend1").style.display = "none"
-                  document.getElementById("attend2").style.display = "block"
-                  document.getElementById("eew").style.display = "none"
-                  document.getElementById("tsunami1").style.display = "none"
-                  document.getElementById("tsunami2").style.display = "none"
-                  document.getElementById("quake").style.display = "none"
-                  document.getElementById("tsunamiNotifycation").style.display = "none"
-                  document.getElementById("error").style.display = "none"
-                }else{
-                  throw expression;
-                }
-              }
+              attend = data.value;
+              console.log(data.value)
+              if(data.value === "Yes"){
+                document.getElementById("attend1").style.display = "block"
+                document.getElementById("attend2").style.display = "none"
+                document.getElementById("error").style.display = "none"
+              }else if(data.value === "No"){
+                document.getElementById("attend1").style.display = "none"
+                document.getElementById("attend2").style.display = "block"
+                document.getElementById("error").style.display = "none"
+              }else{
+                throw expression;
+              }  
             });
           if(num === 3){
             num = 0;
@@ -90,6 +78,8 @@
                   document.getElementById("quake").style.display = "none"
                   document.getElementById("tsunamiNotifycation").style.display = "none"
                   document.getElementById("error").style.display = "none"
+                }else{
+                  document.getElementById("eew").style.display = "none"
                 }
               });
             //津波(tsunami1,tsunami2)
@@ -119,9 +109,21 @@
                         document.getElementById("quake").style.display = "none"
                         document.getElementById("tsunamiNotifycation").style.display = "none"
                         document.getElementById("error").style.display = "none"
+                      }else{
+                        document.getElementById("tsunami1").style.display = "none"
+                        document.getElementById("tsunami2").style.display = "none"
                       }
+                    }else{
+                      document.getElementById("tsunami1").style.display = "none"
+                      document.getElementById("tsunami2").style.display = "none"
                     }
+                  }else{
+                    document.getElementById("tsunami1").style.display = "none"
+                    document.getElementById("tsunami2").style.display = "none"
                   }
+                }else{
+                  document.getElementById("tsunami1").style.display = "none"
+                  document.getElementById("tsunami2").style.display = "none"
                 }
               });
             url = 'https://api.p2pquake.net/v2/history?codes=551&limit=1';
@@ -139,7 +141,11 @@
                     document.getElementById("quake").style.display = "block"
                     document.getElementById("tsunamiNotifycation").style.display = "none"
                     document.getElementById("error").style.display = "none"
+                  }else{
+                    document.getElementById("quake").style.display = "none"
                   }
+                }else{
+                  document.getElementById("quake").style.display = "none"
                 }
               });
             }
