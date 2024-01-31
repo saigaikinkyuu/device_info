@@ -12,29 +12,31 @@
         height: 695px;
       }
     </style>
-    <div id="attend1" style="display: none;">
-      <img src="./在席.png">
-    </div>
-    <div id="attend2" style="display: none;">
-      <img src="./離席.gif">
-    </div>
-    <div id="eew" style="display: none;">
-      <img src="./eew.gif">
-    </div>
-    <div id="tsunami1" style="display: none;">
-      <img src="./津波1.png">
-    </div>
-    <div id="tsunami2" style="display: none;">
-      <img src="./津波2.png">
-    </div>
-    <div id="quake" style="display: none;">
-      <img src="./地震1.png">
-    </div>
-    <div id="tsunamiNotifycation" style="display: none;">
-      <img src="./津波1(通知).png">
-    </div>
-    <div id="error" style="display: none;">
-      <img src="./不具合1.png">
+    <div onclick="openFullscreen();">
+      <div id="attend1" style="display: none;">
+        <img src="./在席.png">
+      </div>
+      <div id="attend2" style="display: none;">
+        <img src="./離席.gif">
+      </div>
+      <div id="eew" style="display: none;">
+        <img src="./eew.gif">
+      </div>
+      <div id="tsunami1" style="display: none;">
+        <img src="./津波1.png">
+      </div>
+      <div id="tsunami2" style="display: none;">
+        <img src="./津波2.png">
+      </div>
+      <div id="quake" style="display: none;">
+       <img src="./地震1.png">
+      </div>
+      <div id="tsunamiNotifycation" style="display: none;">
+        <img src="./津波1(通知).png">
+      </div>
+      <div id="error" style="display: none;">
+        <img src="./不具合1.png">
+      </div>
     </div>
     <script>
       window.setInterval(check, 1000);
@@ -42,7 +44,18 @@
       var num = 0;
       var num2 = false;
       error = false
-      document.documentElement.requestFullscreen();
+      function requestFullscreen(elem) {
+        // 全画面表示をリクエストするメソッドを取得
+        const method = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.mozRequestFullScreen || elem.msRequestFullscreen;
+        if (method) {
+          method.call(elem); // 全画面表示をリクエスト
+        }
+      }
+
+      function openFullscreen() {
+        const elem = document.documentElement;
+        requestFullscreen(elem);
+      }
       function check(){
         try{
           num++
