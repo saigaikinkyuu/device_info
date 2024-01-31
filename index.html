@@ -82,20 +82,34 @@
                 document.getElementById("error").style.display = "none"
               }
             });
-          url = 'https://api.p2pquake.net/v2/history?codes=556';
+          //津波(tsunami1,tsunami2)
+          url = 'https://api.p2pquake.net/v2/jma/tsunami?limit=1';
           fetch(url)
             .then(response => response.json())
             .then(data => {
               if(tsunami !== data.id){
                 tsunami = data.id;
-                document.getElementById("attend1").style.display = "none"
-                document.getElementById("attend2").style.display = "none"
-                document.getElementById("eew").style.display = "block"
-                document.getElementById("tsunami1").style.display = "none"
-                document.getElementById("tsunami2").style.display = "none"
-                document.getElementById("quake").style.display = "none"
-                document.getElementById("tsunamiNotifycation").style.display = "none"
-                document.getElementById("error").style.display = "none"
+                if(data.area){
+                  if(data.areas[0].grade === "MajorWarning"){
+                    document.getElementById("attend1").style.display = "none"
+                    document.getElementById("attend2").style.display = "none"
+                    document.getElementById("eew").style.display = "none"
+                    document.getElementById("tsunami1").style.display = "block"
+                    document.getElementById("tsunami2").style.display = "none"
+                    document.getElementById("quake").style.display = "none"
+                    document.getElementById("tsunamiNotifycation").style.display = "none"
+                    document.getElementById("error").style.display = "none"
+                  }else if(data.areas[0].grade === "Warning"){
+                    document.getElementById("attend1").style.display = "none"
+                    document.getElementById("attend2").style.display = "none"
+                    document.getElementById("eew").style.display = "none"
+                    document.getElementById("tsunami1").style.display = "none"
+                    document.getElementById("tsunami2").style.display = "block"
+                    document.getElementById("quake").style.display = "none"
+                    document.getElementById("tsunamiNotifycation").style.display = "none"
+                    document.getElementById("error").style.display = "none"
+                  }
+                }
               }
             });
         }catch(e){
