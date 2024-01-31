@@ -83,31 +83,33 @@
               }
             });
           //津波(tsunami1,tsunami2)
-          url = 'https://api.p2pquake.net/v2/jma/tsunami?limit=1';
+          url = 'https://api.p2pquake.net/v2/history?codes=552&limit=1';
           fetch(url)
             .then(response => response.json())
             .then(data => {
-              if(tsunami !== data[0].id){
-                tsunami = data[0].id;
-                if(data[0].area){
-                  if(data[0].areas[0].grade === "MajorWarning"){
-                    document.getElementById("attend1").style.display = "none"
-                    document.getElementById("attend2").style.display = "none"
-                    document.getElementById("eew").style.display = "none"
-                    document.getElementById("tsunami1").style.display = "block"
-                    document.getElementById("tsunami2").style.display = "none"
-                    document.getElementById("quake").style.display = "none"
-                    document.getElementById("tsunamiNotifycation").style.display = "none"
-                    document.getElementById("error").style.display = "none"
-                  }else if(data[0].areas[0].grade === "Warning"){
-                    document.getElementById("attend1").style.display = "none"
-                    document.getElementById("attend2").style.display = "none"
-                    document.getElementById("eew").style.display = "none"
-                    document.getElementById("tsunami1").style.display = "none"
-                    document.getElementById("tsunami2").style.display = "block"
-                    document.getElementById("quake").style.display = "none"
-                    document.getElementById("tsunamiNotifycation").style.display = "none"
-                    document.getElementById("error").style.display = "none"
+              if(data[0]){
+                if(tsunami !== data[0].id){
+                  tsunami = data[0].id;
+                  if(data[0].area){
+                    if(data[0].areas[0].grade === "MajorWarning"){
+                      document.getElementById("attend1").style.display = "none"
+                      document.getElementById("attend2").style.display = "none"
+                      document.getElementById("eew").style.display = "none"
+                      document.getElementById("tsunami1").style.display = "block"
+                      document.getElementById("tsunami2").style.display = "none"
+                      document.getElementById("quake").style.display = "none"
+                      document.getElementById("tsunamiNotifycation").style.display = "none"
+                      document.getElementById("error").style.display = "none"
+                    }else if(data[0].areas[0].grade === "Warning"){
+                      document.getElementById("attend1").style.display = "none"
+                      document.getElementById("attend2").style.display = "none"
+                      document.getElementById("eew").style.display = "none"
+                      document.getElementById("tsunami1").style.display = "none"
+                      document.getElementById("tsunami2").style.display = "block"
+                      document.getElementById("quake").style.display = "none"
+                      document.getElementById("tsunamiNotifycation").style.display = "none"
+                      document.getElementById("error").style.display = "none"
+                    }
                   }
                 }
               }
