@@ -59,7 +59,7 @@
                 document.getElementById("attend2").style.display = "block"
                 document.getElementById("error").style.display = "none"
               }else{
-                throw "Error";
+                throw new Error('error')
               }  
             });
           if(num === 3){
@@ -153,6 +153,7 @@
               });
             }
         }catch(e){
+          console.log(e.message)
           document.getElementById("attend1").style.display = "none"
           document.getElementById("attend2").style.display = "none"
           document.getElementById("eew").style.display = "none"
