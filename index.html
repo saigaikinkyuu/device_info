@@ -14,6 +14,7 @@
       }
     </style>
     <div onclick="openFullscreen();">
+      <h2 id="battery" style="background-color:#0000004d;position: absolute;z-index: 10000;"></h2>
       <div id="attend1" style="display: none;">
         <img src="./在席.png">
       </div>
@@ -191,6 +192,11 @@
           document.getElementById("error").style.display = "block"
         }
       }
+    </script>
+    <script>
+      navigator.getBattery().then(function(battery) {
+        document.getElementById('battery').innerHTML = battery.level;
+      });
     </script>
   </body>
 </html>
