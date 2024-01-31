@@ -34,16 +34,21 @@
     <script>
       window.setInterval(check, 1000);
       var attend,eew,tsunami,quake,tsunamiNotify,error = "";
+      var num = 0;
       error = false
       function check(){
         try{
+          num++
+          if(attend === ""){
+            return
+          }
           var url = 'https://script.google.com/macros/s/AKfycbyD8llwZGIAZ8Dqvs7uv0LgHjDR45oCj95OvP8LLzLCkg0JEeXWElrS9ex7GutPlB70/exec';
           fetch(url)
             .then(response => response.json())
             .then(data => {
-              if(attend !== data.attend){
-                attend = data.attend;
-                if(data.attend === "Yes"){
+              if(attend !== data.value){
+                attend = data.value;
+                if(data.value === "Yes"){
                   document.getElementById("attend1").style.display = "block"
                   document.getElementById("attend2").style.display = "none"
                   document.getElementById("eew").style.display = "none"
@@ -52,7 +57,7 @@
                   document.getElementById("quake").style.display = "none"
                   document.getElementById("tsunamiNotifycation").style.display = "none"
                   document.getElementById("error").style.display = "none"
-                }else if(data.attend === "No"){
+                }else if(data.value === "No"){
                   document.getElementById("attend1").style.display = "none"
                   document.getElementById("attend2").style.display = "block"
                   document.getElementById("eew").style.display = "none"
@@ -66,72 +71,75 @@
                 }
               }
             });
-          url = 'https://api.p2pquake.net/v2/history?codes=556';
-          fetch(url)
-            .then(response => response.json())
-            .then(data => {
-              if(eew !== data[0].id){
-                eew = data[0].id;
-                document.getElementById("attend1").style.display = "none"
-                document.getElementById("attend2").style.display = "none"
-                document.getElementById("eew").style.display = "block"
-                document.getElementById("tsunami1").style.display = "none"
-                document.getElementById("tsunami2").style.display = "none"
-                document.getElementById("quake").style.display = "none"
-                document.getElementById("tsunamiNotifycation").style.display = "none"
-                document.getElementById("error").style.display = "none"
-              }
-            });
-          //津波(tsunami1,tsunami2)
-          url = 'https://api.p2pquake.net/v2/history?codes=552&limit=1';
-          fetch(url)
-            .then(response => response.json())
-            .then(data => {
-              if(data[0]){
-                if(tsunami !== data[0].id){
-                  tsunami = data[0].id;
-                  if(data[0].area){
-                    if(data[0].areas[0].grade === "MajorWarning"){
-                      document.getElementById("attend1").style.display = "none"
-                      document.getElementById("attend2").style.display = "none"
-                      document.getElementById("eew").style.display = "none"
-                      document.getElementById("tsunami1").style.display = "block"
-                      document.getElementById("tsunami2").style.display = "none"
-                      document.getElementById("quake").style.display = "none"
-                      document.getElementById("tsunamiNotifycation").style.display = "none"
-                      document.getElementById("error").style.display = "none"
-                    }else if(data[0].areas[0].grade === "Warning"){
-                      document.getElementById("attend1").style.display = "none"
-                      document.getElementById("attend2").style.display = "none"
-                      document.getElementById("eew").style.display = "none"
-                      document.getElementById("tsunami1").style.display = "none"
-                      document.getElementById("tsunami2").style.display = "block"
-                      document.getElementById("quake").style.display = "none"
-                      document.getElementById("tsunamiNotifycation").style.display = "none"
-                      document.getElementById("error").style.display = "none"
-                    }
-                  }
-                }
-              }
-            });
-          url = 'https://api.p2pquake.net/v2/history?codes=551&limit=1';
-          fetch(url)
-            .then(response => response.json())
-            .then(data => {
-              if(eew !== data[0].id){
-                if(data[0].earthquake.maxScale <= 70){
-                  quake = data[0].id;
+          if(num === 3){
+            num = 0;
+            url = 'https://api.p2pquake.net/v2/history?codes=556';
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                if(eew !== data[0].id){
+                  eew = data[0].id;
                   document.getElementById("attend1").style.display = "none"
                   document.getElementById("attend2").style.display = "none"
-                  document.getElementById("eew").style.display = "none"
+                  document.getElementById("eew").style.display = "block"
                   document.getElementById("tsunami1").style.display = "none"
                   document.getElementById("tsunami2").style.display = "none"
-                  document.getElementById("quake").style.display = "block"
+                  document.getElementById("quake").style.display = "none"
                   document.getElementById("tsunamiNotifycation").style.display = "none"
                   document.getElementById("error").style.display = "none"
                 }
-              }
-            });
+              });
+            //津波(tsunami1,tsunami2)
+            url = 'https://api.p2pquake.net/v2/history?codes=552&limit=1';
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                if(data[0]){
+                  if(tsunami !== data[0].id){
+                    tsunami = data[0].id;
+                    if(data[0].area){
+                      if(data[0].areas[0].grade === "MajorWarning"){
+                        document.getElementById("attend1").style.display = "none"
+                        document.getElementById("attend2").style.display = "none"
+                        document.getElementById("eew").style.display = "none"
+                        document.getElementById("tsunami1").style.display = "block"
+                        document.getElementById("tsunami2").style.display = "none"
+                        document.getElementById("quake").style.display = "none"
+                        document.getElementById("tsunamiNotifycation").style.display = "none"
+                        document.getElementById("error").style.display = "none"
+                      }else if(data[0].areas[0].grade === "Warning"){
+                        document.getElementById("attend1").style.display = "none"
+                        document.getElementById("attend2").style.display = "none"
+                        document.getElementById("eew").style.display = "none"
+                        document.getElementById("tsunami1").style.display = "none"
+                        document.getElementById("tsunami2").style.display = "block"
+                        document.getElementById("quake").style.display = "none"
+                        document.getElementById("tsunamiNotifycation").style.display = "none"
+                        document.getElementById("error").style.display = "none"
+                      }
+                    }
+                  }
+                }
+              });
+            url = 'https://api.p2pquake.net/v2/history?codes=551&limit=1';
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                if(eew !== data[0].id){
+                  if(data[0].earthquake.maxScale <= 70){
+                    quake = data[0].id;
+                    document.getElementById("attend1").style.display = "none"
+                    document.getElementById("attend2").style.display = "none"
+                    document.getElementById("eew").style.display = "none"
+                    document.getElementById("tsunami1").style.display = "none"
+                    document.getElementById("tsunami2").style.display = "none"
+                    document.getElementById("quake").style.display = "block"
+                    document.getElementById("tsunamiNotifycation").style.display = "none"
+                    document.getElementById("error").style.display = "none"
+                  }
+                }
+              });
+            }
         }catch(e){
           document.getElementById("attend1").style.display = "none"
           document.getElementById("attend2").style.display = "none"
