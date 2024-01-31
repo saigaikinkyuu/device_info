@@ -35,11 +35,13 @@
       window.setInterval(check, 1000);
       var attend,eew,tsunami,quake,tsunamiNotify,error = "";
       var num = 0;
+      var num2 = false;
       error = false
       function check(){
         try{
           num++
-          if(attend === ""){
+          if(num2 === false){
+            num2 = true
             return
           }
           var url = 'https://script.google.com/macros/s/AKfycbyD8llwZGIAZ8Dqvs7uv0LgHjDR45oCj95OvP8LLzLCkg0JEeXWElrS9ex7GutPlB70/exec';
@@ -48,6 +50,7 @@
             .then(data => {
               if(attend !== data.value){
                 attend = data.value;
+                console.log(data.value)
                 if(data.value === "Yes"){
                   document.getElementById("attend1").style.display = "block"
                   document.getElementById("attend2").style.display = "none"
