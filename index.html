@@ -7,35 +7,35 @@
     <title>情報表示モニター</title>
   </head>
   <body>
-    <div id="attend1">
-      <img src="./出席1.png">
+    <div id="attend1" style="display: none;">
+      <img src="./在席.png">
     </div>
-    <div id="attend2">
+    <div id="attend2" style="display: none;">
       <img src="./離席.gif">
     </div>
-    <div id="eew">
+    <div id="eew" style="display: none;">
       <img src="./eew.gif">
     </div>
-    <div id="tsunami1">
+    <div id="tsunami1" style="display: none;">
       <img src="./津波1.png">
     </div>
-    <div id="tsunami2">
+    <div id="tsunami2" style="display: none;">
       <img src="./津波2.png">
     </div>
-    <div id="quake">
+    <div id="quake" style="display: none;">
       <img src="./地震1.png">
     </div>
-    <div id="tsunamiNotifycation">
+    <div id="tsunamiNotifycation" style="display: none;">
       <img src="./津波1(通知).png">
     </div>
-    <div id="error">
+    <div id="error" style="display: none;">
       <img src="./不具合1.png">
     </div>
     <script>
       window.setInterval(check, 1000);
       var attend,eew,tsunami,quake,tsunamiNotify,error = "";
       error = false
-      check(){
+      function check(){
         try{
           var url = 'https://script.google.com/macros/s/AKfycbyD8llwZGIAZ8Dqvs7uv0LgHjDR45oCj95OvP8LLzLCkg0JEeXWElrS9ex7GutPlB70/exec';
           fetch(url)
