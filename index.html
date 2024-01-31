@@ -195,7 +195,7 @@
     </script>
     <script>
       navigator.getBattery().then(function(battery) {
-        document.getElementById('battery').innerHTML = battery.level;
+        document.getElementById('battery').innerHTML = battery.level*100 + "%";
       });
     </script>
   </body>
