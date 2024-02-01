@@ -69,38 +69,40 @@
               .then(data => {
                 attend = data.value;
                 console.log(data[0].value)
-                if(data[0].value === "Yes"){
-                  document.getElementById("attend1").style.display = "block"
-                  document.getElementById("attend2").style.display = "none"
-                  document.getElementById("error").style.display = "none"
-                  const notifycation = new Howl({
-                    src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
-                    autoplay: true,
-                    volume: 2,
-                    loop: false
-                  });
+                if(attend === data[0].value){
+                  if(data[0].value === "Yes"){
+                    document.getElementById("attend1").style.display = "block"
+                    document.getElementById("attend2").style.display = "none"
+                    document.getElementById("error").style.display = "none"
+                    const notifycation = new Howl({
+                      src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
+                      autoplay: true,
+                      volume: 1,
+                      loop: false
+                    });
                   notifycation.play();
-                }else if(data[0].value === "No"){
-                  document.getElementById("attend1").style.display = "none"
-                  document.getElementById("attend2").style.display = "block"
-                  document.getElementById("error").style.display = "none"
-                  const notifycation = new Howl({
-                    src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
-                    autoplay: true,
-                    volume: 2,
-                    loop: false
-                  });
-                  notifycation.play();
-                }else{
-                  document.getElementById("attend1").style.display = "none"
-                  document.getElementById("attend2").style.display = "none"
-                  document.getElementById("eew").style.display = "none"
-                  document.getElementById("tsunami1").style.display = "none"
-                  document.getElementById("tsunami2").style.display = "none"
-                  document.getElementById("quake").style.display = "none"
-                  document.getElementById("tsunamiNotifycation").style.display = "none"
-                  document.getElementById("error").style.display = "block"
-                }  
+                  }else if(data[0].value === "No"){
+                    document.getElementById("attend1").style.display = "none"
+                    document.getElementById("attend2").style.display = "block"
+                    document.getElementById("error").style.display = "none"
+                    const notifycation = new Howl({
+                      src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
+                      autoplay: true,
+                      volume: 2,
+                      loop: false
+                    });
+                    notifycation.play();
+                  }else{
+                    document.getElementById("attend1").style.display = "none"
+                    document.getElementById("attend2").style.display = "none"
+                    document.getElementById("eew").style.display = "none"
+                    document.getElementById("tsunami1").style.display = "none"
+                    document.getElementById("tsunami2").style.display = "none"
+                    document.getElementById("quake").style.display = "none"
+                    document.getElementById("tsunamiNotifycation").style.display = "none"
+                    document.getElementById("error").style.display = "block"
+                 }
+                }
               });
             if(num === 3){
               num = 0;
