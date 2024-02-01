@@ -47,19 +47,19 @@
     <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.js" defer></script>
     <script>
       window.setInterval(check, 1000);
-      const tsunamiN = new Howl({
+      var tsunamiN = new Howl({
         src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
         autoplay: false,
         volume: 2,
         loop: true
       });
-      const eewN = new Howl({
+      var eewN = new Howl({
         src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
         autoplay: false,
         volume: 2,
         loop: true
       });
-      const quakeN = new Howl({
+      var quakeN = new Howl({
         src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
         autoplay: false,
         volume: 2,
