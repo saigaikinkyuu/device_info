@@ -139,15 +139,15 @@
               fetch(url)
                 .then(response => response.json())
                 .then(data => {
+                  const tsunamiN = new Howl({
+                    src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
+                    autoplay: true,
+                    volume: 2,
+                    loop: true
+                  });
                   if(data[0]){
                     if(tsunami !== data[0].id){
                       tsunami = data[0].id;
-                      const tsunamiN = new Howl({
-                        src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
-                        autoplay: true,
-                        volume: 2,
-                        loop: true
-                      });
                       console.log(data[0].id + "/" + tsunami)
                       if(data[0].area){
                         if(data[0].areas[0].grade === "MajorWarning"){
@@ -228,14 +228,14 @@
                 });
               console.log(num2)
               if(num2 === false){
-                if(tsunamiN){
+                if(tsunamiN.playing()){
                   tsunamiN.stop();
                 }
-                if(quakeN){
-                quakeN.stop();
+                if(quakeN.playing()){
+                  quakeN.stop();
                 }
-                if(eewN){
-                eewN.stop();
+                if(eewN.playing()){
+                  eewN.stop();
                 }
                 num2 = true;
               }
