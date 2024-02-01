@@ -110,6 +110,24 @@
                 }
               });
             if(num === 3){
+              const tsunamiN = new Howl({
+                src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
+                autoplay: false,
+                volume: 2,
+                loop: true
+              });
+              const eewN = new Howl({
+                src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
+                autoplay: false,
+                volume: 2,
+                loop: true
+              });
+              const quakeN = new Howl({
+                src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
+                autoplay: false,
+                volume: 2,
+                loop: true
+              });
               num = 0;
               url = 'https://api.p2pquake.net/v2/history?codes=556';
               fetch(url)
@@ -124,12 +142,6 @@
                       document.getElementById("quake").style.display = "none"
                       document.getElementById("tsunamiNotifycation").style.display = "none"
                       document.getElementById("error").style.display = "none"
-                      const eewN = new Howl({
-                        src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
-                        autoplay: false,
-                        volume: 2,
-                        loop: true
-                      });
                       eewN.play();
                       function eewStop(){
                         eewN.stop();
@@ -144,12 +156,6 @@
               fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                  const tsunamiN = new Howl({
-                    src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
-                    autoplay: false,
-                    volume: 2,
-                    loop: true
-                  });
                   if(data[0]){
                     if(tsunami !== data[0].id){
                       tsunami = data[0].id;
@@ -213,12 +219,6 @@
                         document.getElementById("quake").style.display = "block"
                         document.getElementById("tsunamiNotifycation").style.display = "none"
                         document.getElementById("error").style.display = "none"
-                        const quakeN = new Howl({
-                          src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
-                          autoplay: false,
-                          volume: 2,
-                          loop: true
-                        });
                         quakeN.play();
                         function quakeStop(){
                           quakeN.stop();
@@ -233,19 +233,16 @@
                 });
               console.log(num2)
               if(num2 === false){
-                num4++
-                if(num4 === 2){
-                  if(quakeN.playing()){
-                    quakeN.stop()
-                  }
-                  if(eewN.playing()){
-                    eewN.stop()
-                  }
-                  if(tsunamiN.playing()){
-                    tsunamiN.stop()
-                  }
-                  num2 = true;
+                if(quakeN.playing()){
+                  quakeN.stop()
                 }
+                if(eewN.playing()){
+                  eewN.stop()
+                }
+                if(tsunamiN.playing()){
+                  tsunamiN.stop()
+                }
+                num2 = true;
               }
             }
           }
