@@ -40,10 +40,6 @@
       <div id="error" style="display: none;position: absolute;z-index: 1;" onclick="errorStop()">
         <img src="./不具合1.png">
       </div>
-      <button onclick="eewStop()">EEW</button>
-      <button onclick="tsunamiStop()">tsunami</button>
-      <button onclick="quakeStop()">quake</button>
-      <button onclick="errorStop()">error</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.js" defer></script>
     <script>
@@ -271,12 +267,19 @@
       }
       function eewStop(){
         num4 = 1
+        document.getElementById("eew").style.display = "none"
       }
-       function tsunamiStop(){
+       function tsunamiStop(id){
         num4 = 1
+         if(id = 1){
+           document.getElementById("tsunami1").style.display = "none"
+         }else if(id = 2){
+           document.getElementById("tsunami2").style.display = "none"
+         }
       }
       function quakeStop(){
         num4 = 1
+        document.getElementById("quake").style.display = "none"
       }
     </script>
     <script>
