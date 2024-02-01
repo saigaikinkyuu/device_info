@@ -79,8 +79,8 @@
                 const notifycation = new Howl({
                   src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
                   autoplay: true,
-                  volume: 3,
-                  loop: flase
+                  volume: 2,
+                  loop: false
                 });
                 notifycation.play();
               }else if(data[0].value === "No"){
@@ -90,8 +90,8 @@
                 const notifycation = new Howl({
                   src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
                   autoplay: true,
-                  volume: 3,
-                  loop: flase
+                  volume: 2,
+                  loop: false
                 });
                 notifycation.play();
               }else{
@@ -124,7 +124,7 @@
                   const eewN = new Howl({
                     src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
                     autoplay: true,
-                    volume: 3,
+                    volume: 2,
                     loop: true
                   });
                   eewN.play();
@@ -146,7 +146,7 @@
                     const tsunamiN = new Howl({
                       src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
                       autoplay: true,
-                      volume: 3,
+                      volume: 2,
                       loop: true
                     });
                     console.log(data[0].id + "/" + tsunami)
@@ -213,7 +213,7 @@
                     const quakeN = new Howl({
                       src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
                       autoplay: true,
-                      volume: 3,
+                      volume: 2,
                       loop: true
                     });
                     quakeN.play();
@@ -241,7 +241,7 @@
           const errorN = new Howl({
             src: 'https://saigaikinkyuu.github.io/device_info/audio/error.mp3',
             autoplay: true,
-            volume: 3,
+            volume: 1,
             loop: true
           });
           errorN.play();
