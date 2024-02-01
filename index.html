@@ -70,19 +70,22 @@
             src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
             autoplay: false,
             volume: 2,
-            loop: true
+            loop: false,
+            onplay: () =>{if(num4 !== 0){tsunamiN.stop()}}
           });
           var eewN = new Howl({
            src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
             autoplay: false,
             volume: 2,
-            loop: true
+            loop: false,
+            onplay: () =>{if(num4 !== 0){tsunamiN.stop()}}
           });
           var quakeN = new Howl({
             src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
             autoplay: false,
             volume: 2,
-            loop: true
+            loop: false,
+            onplay: () =>{if(num4 !== 0){tsunamiN.stop()}}
           });
           num++
           if(num2 === false || num2 === true){
