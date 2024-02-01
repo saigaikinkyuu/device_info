@@ -238,15 +238,6 @@
               }
             }
           }
-          function eewStop(){
-            eewN.stop()
-          }
-          function tsunamiStop(){
-            tsunamiN.stop()
-          }
-          function quakeStop(){
-            quakeN.stop()
-          }
         }catch(e){
           console.error(e.message + e.lineNumber)
           document.getElementById("eew").style.display = "none"
@@ -266,6 +257,15 @@
             errorN.stop();
           }
         }
+      }
+      function eewStop(){
+        eewN.stop()
+      }
+       function tsunamiStop(){
+        tsunamiN.stop()
+      }
+      function quakeStop(){
+        quakeN.stop()
       }
     </script>
     <script>
