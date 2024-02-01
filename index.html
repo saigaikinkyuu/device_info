@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.js" defer></script>
     <title>情報表示モニター</title>
   </head>
   <body>
@@ -21,22 +22,22 @@
       <div id="attend2" style="display: none;position: absolute;z-index: 1;">
         <img src="./離席.gif">
       </div>
-      <div id="eew" style="display: none;position: absolute;z-index: 1;">
+      <div id="eew" style="display: none;position: absolute;z-index: 1;" onclick="eewStop()">
         <img src="./eew.gif">
       </div>
-      <div id="tsunami1" style="display: none;position: absolute;z-index: 1;">
+      <div id="tsunami1" style="display: none;position: absolute;z-index: 1;" onclick="tsuanmiStop()">
         <img src="./津波1.png">
       </div>
-      <div id="tsunami2" style="display: none;position: absolute;z-index: 1;">
+      <div id="tsunami2" style="display: none;position: absolute;z-index: 1;" onclick="tsunamiStop()">
         <img src="./津波2.png">
       </div>
-      <div id="quake" style="display: none;position: absolute;z-index: 1;">
+      <div id="quake" style="display: none;position: absolute;z-index: 1;" onclick="quakeStop()">
        <img src="./地震1.png">
       </div>
       <div id="tsunamiNotifycation" style="display: none;position: absolute;z-index: 1;">
         <img src="./津波1(通知).png">
       </div>
-      <div id="error" style="display: none;position: absolute;z-index: 1;">
+      <div id="error" style="display: none;position: absolute;z-index: 1;" onclick="errorStop()">
         <img src="./不具合1.png">
       </div>
     </div>
@@ -75,10 +76,24 @@
                 document.getElementById("attend1").style.display = "block"
                 document.getElementById("attend2").style.display = "none"
                 document.getElementById("error").style.display = "none"
+                const notifycation = new Howl({
+                  src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
+                  autoplay: true,
+                  volume: 3,
+                  loop: flase
+                });
+                notifycation.play();
               }else if(data[0].value === "No"){
                 document.getElementById("attend1").style.display = "none"
                 document.getElementById("attend2").style.display = "block"
                 document.getElementById("error").style.display = "none"
+                const notifycation = new Howl({
+                  src: 'https://saigaikinkyuu.github.io/device_info/audio/notifycation.mp3',
+                  autoplay: true,
+                  volume: 3,
+                  loop: flase
+                });
+                notifycation.play();
               }else{
                 document.getElementById("attend1").style.display = "none"
                 document.getElementById("attend2").style.display = "none"
@@ -98,7 +113,6 @@
               .then(data => {
                 if(eew !== data[0].id){
                   eew = data[0].id;
-                  console.log(data[0].id + "/" + eew)
                   document.getElementById("attend1").style.display = "none"
                   document.getElementById("attend2").style.display = "none"
                   document.getElementById("eew").style.display = "block"
@@ -107,6 +121,16 @@
                   document.getElementById("quake").style.display = "none"
                   document.getElementById("tsunamiNotifycation").style.display = "none"
                   document.getElementById("error").style.display = "none"
+                  const eewN = new Howl({
+                    src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
+                    autoplay: true,
+                    volume: 3,
+                    loop: true
+                  });
+                  eewN.play();
+                  function eewStop(){
+                    eewN.stop();
+                  }
                 }else{
                   document.getElementById("eew").style.display = "none"
                 }
@@ -119,6 +143,12 @@
                 if(data[0]){
                   if(tsunami !== data[0].id){
                     tsunami = data[0].id;
+                    const tsunamiN = new Howl({
+                      src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
+                      autoplay: true,
+                      volume: 3,
+                      loop: true
+                    });
                     console.log(data[0].id + "/" + tsunami)
                     if(data[0].area){
                       if(data[0].areas[0].grade === "MajorWarning"){
@@ -130,6 +160,10 @@
                         document.getElementById("quake").style.display = "none"
                         document.getElementById("tsunamiNotifycation").style.display = "none"
                         document.getElementById("error").style.display = "none"
+                        tsunamiN.play();
+                        function tsunamiStop(){
+                          tsunamiN.stop();
+                        }
                       }else if(data[0].areas[0].grade === "Warning"){
                         document.getElementById("attend1").style.display = "none"
                         document.getElementById("attend2").style.display = "none"
@@ -139,6 +173,10 @@
                         document.getElementById("quake").style.display = "none"
                         document.getElementById("tsunamiNotifycation").style.display = "none"
                         document.getElementById("error").style.display = "none"
+                        tsunamiN.play();
+                        function tsunamiStop(){
+                          tsunamiN.stop();
+                        }
                       }else{
                         document.getElementById("tsunami1").style.display = "none"
                         document.getElementById("tsunami2").style.display = "none"
@@ -172,6 +210,16 @@
                     document.getElementById("quake").style.display = "block"
                     document.getElementById("tsunamiNotifycation").style.display = "none"
                     document.getElementById("error").style.display = "none"
+                    const quakeN = new Howl({
+                      src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
+                      autoplay: true,
+                      volume: 3,
+                      loop: true
+                    });
+                    quakeN.play();
+                    function quakeN(){
+                      quakeN.stop();
+                    }
                   }else{
                     document.getElementById("quake").style.display = "none"
                   }
@@ -190,6 +238,16 @@
           document.getElementById("quake").style.display = "none"
           document.getElementById("tsunamiNotifycation").style.display = "none"
           document.getElementById("error").style.display = "block"
+          const errorN = new Howl({
+            src: 'https://saigaikinkyuu.github.io/device_info/audio/error.mp3',
+            autoplay: true,
+            volume: 3,
+            loop: true
+          });
+          errorN.play();
+          function quakeN(){
+            errorN.stop();
+          }
         }
       }
     </script>
