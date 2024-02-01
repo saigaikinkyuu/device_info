@@ -71,21 +71,21 @@
             autoplay: false,
             volume: 2,
             loop: false,
-            onplay: () =>{if(num4 !== 0){tsunamiN.stop()}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
           });
           var eewN = new Howl({
            src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
             autoplay: false,
             volume: 2,
             loop: false,
-            onplay: () =>{if(num4 !== 0){tsunamiN.stop()}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
           });
           var quakeN = new Howl({
             src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
             autoplay: false,
             volume: 2,
             loop: false,
-            onplay: () =>{if(num4 !== 0){tsunamiN.stop()}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
           });
           num++
           if(num2 === false || num2 === true){
@@ -139,6 +139,7 @@
                   if(eew !== data[0].id){
                     eew = data[0].id;
                     if(num2 === true){
+                      num4 = 2
                       document.getElementById("eew").style.display = "block"
                       document.getElementById("tsunami1").style.display = "none"
                       document.getElementById("tsunami2").style.display = "none"
@@ -163,6 +164,7 @@
                       if(data[0].area){
                         if(data[0].areas[0].grade === "MajorWarning"){
                             if(num2 === true){
+                              num4 = 2
                               document.getElementById("eew").style.display = "none"
                               document.getElementById("tsunami1").style.display = "block"
                               document.getElementById("tsunami2").style.display = "none"
@@ -173,6 +175,7 @@
                             }
                         }else if(data[0].areas[0].grade === "Warning"){
                             if(num2 === true){
+                              num4 = 2
                               document.getElementById("eew").style.display = "none"
                               document.getElementById("tsunami1").style.display = "none"
                               document.getElementById("tsunami2").style.display = "block"
@@ -206,6 +209,7 @@
                     if(data[0].earthquake.maxScale <= 70){
                       quake = data[0].id;
                       if(num2 === true){
+                        num4 = 2
                         console.log(data[0].id + "/" + quake)
                         document.getElementById("eew").style.display = "none"
                         document.getElementById("tsunami1").style.display = "none"
@@ -224,20 +228,9 @@
                 });
               console.log(num2)
               if(num4 <= 2){
-                num4++
+                num4 = 1
                 console.log(num4)
                 num2 = true;
-                if(num4 >= 2){
-                  if(quakeN.playing()){
-                    quakeN.stop()
-                  }
-                  if(eewN.playing()){
-                    eewN.stop()
-                  }
-                  if(tsunamiN.playing()){
-                    tsunamiN.stop()
-                  }
-                }
               }
             }
           }
