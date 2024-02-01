@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <script src="https://code.jquery.com/jquery-1.6.4.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.js" defer></script>
     <title>情報表示モニター</title>
   </head>
   <body>
@@ -45,6 +44,7 @@
       <button onclick="quakeStop()">quake</button>
       <button onclick="errorStop()">error</button>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.js" defer></script>
     <script>
       window.setInterval(check, 1000);
       const tsunamiN = new Howl({
