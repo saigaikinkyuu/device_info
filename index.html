@@ -47,24 +47,6 @@
     <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.js" defer></script>
     <script>
       window.setInterval(check, 1000);
-      var tsunamiN = new Howl({
-        src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
-        autoplay: false,
-        volume: 2,
-        loop: true
-      });
-      var eewN = new Howl({
-        src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
-        autoplay: false,
-        volume: 2,
-        loop: true
-      });
-      var quakeN = new Howl({
-        src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
-        autoplay: false,
-        volume: 2,
-        loop: true
-      });
       var attend,eew,tsunami,quake,tsunamiNotify,error = "";
       var num = 0;
       var num2 = false;
@@ -84,6 +66,24 @@
       }
       function check(){
         try{
+          var tsunamiN = new Howl({
+            src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
+            autoplay: false,
+            volume: 2,
+            loop: true
+          });
+          var eewN = new Howl({
+           src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
+            autoplay: false,
+            volume: 2,
+            loop: true
+          });
+          var quakeN = new Howl({
+            src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
+            autoplay: false,
+            volume: 2,
+            loop: true
+          });
           num++
           if(num2 === false || num2 === true){
             var url = 'https://script.google.com/macros/s/AKfycbyD8llwZGIAZ8Dqvs7uv0LgHjDR45oCj95OvP8LLzLCkg0JEeXWElrS9ex7GutPlB70/exec';
