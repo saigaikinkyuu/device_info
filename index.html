@@ -72,7 +72,7 @@
             volume: 2,
             loop: false,
             onplay: () =>{if(num4 !== 2){tsunamiN.stop()}},
-            onload: () =>{if(num4 !== 2){tsunamiN.stop()}else{num4=2}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
           });
           var eewN = new Howl({
            src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
@@ -80,7 +80,7 @@
             volume: 2,
             loop: false,
             onplay: () =>{if(num4 !== 2){tsunamiN.stop()}},
-            onload: () =>{if(num4 !== 2){tsunamiN.stop()}else{num4=2}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
           });
           var quakeN = new Howl({
             src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
@@ -88,7 +88,7 @@
             volume: 2,
             loop: false,
             onplay: () =>{if(num4 !== 2){tsunamiN.stop()}},
-            onload: () =>{if(num4 !== 2){tsunamiN.stop()}else{num4=2}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
           });
           num++
           if(num2 === false || num2 === true){
@@ -139,7 +139,7 @@
               fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                  if(eew !== data[0].id){
+                  if(eew !== data[0].id && eew !== ""){
                     eew = data[0].id;
                     if(num2 === true){
                       num4 = 2
@@ -151,6 +151,8 @@
                       document.getElementById("error").style.display = "none"
                       eewN.play();
                     }
+                  }else if(eew === ""){
+                    eew = data[0].id
                   }else{
                     document.getElementById("eew").style.display = "none"
                   }
@@ -161,7 +163,7 @@
                 .then(response => response.json())
                 .then(data => {
                   if(data[0]){
-                    if(tsunami !== data[0].id){
+                    if(tsunami !== data[0].id && tsunami !== ""){
                       tsunami = data[0].id;
                       console.log(data[0].id + "/" + tsunami)
                       if(data[0].area){
@@ -195,6 +197,8 @@
                         document.getElementById("tsunami1").style.display = "none"
                         document.getElementById("tsunami2").style.display = "none"
                       }
+                    }else if(tsunami === ""){
+                      tsunami = data[0].id
                     }else{
                       document.getElementById("tsunami1").style.display = "none"
                       document.getElementById("tsunami2").style.display = "none"
@@ -208,7 +212,7 @@
               fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                  if(quake !== data[0].id){
+                  if(quake !== data[0].id && quake !== ""){
                     if(data[0].earthquake.maxScale <= 70){
                       quake = data[0].id;
                       if(num2 === true){
@@ -225,6 +229,8 @@
                     }else{
                       document.getElementById("quake").style.display = "none"
                     }
+                  }else if(quake === ""){
+                    quake = data[0].id
                   }else{
                     document.getElementById("quake").style.display = "none"
                   }
