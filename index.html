@@ -72,7 +72,7 @@
             volume: 2,
             loop: false,
             onplay: () =>{if(num4 !== 2){tsunamiN.stop()}},
-            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}else{num4=2}}
           });
           var eewN = new Howl({
            src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
@@ -80,7 +80,7 @@
             volume: 2,
             loop: false,
             onplay: () =>{if(num4 !== 2){tsunamiN.stop()}},
-            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}else{num4=2}}
           });
           var quakeN = new Howl({
             src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
@@ -88,7 +88,7 @@
             volume: 2,
             loop: false,
             onplay: () =>{if(num4 !== 2){tsunamiN.stop()}},
-            onload: () =>{if(num4 !== 2){tsunamiN.stop()}}
+            onload: () =>{if(num4 !== 2){tsunamiN.stop()}else{num4=2}}
           });
           num++
           if(num2 === false || num2 === true){
