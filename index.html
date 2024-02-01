@@ -15,6 +15,7 @@
     </style>
     <div onclick="openFullscreen();">
       <h2 id="battery" style="background-color:#000000cf;position: absolute;z-index: 10000;color: white; padding: 5px; margin: 0;"></h2>
+      <h2 id="time" style="background-color:#000000cf;position: absolute;z-index: 10000;color: white; padding: 5px; margin-left: 486px;margin-top: 0px;"></h2>
       <div id="attend1" style="display: none;position: absolute;z-index: 1;">
         <img src="./在席.png">
       </div>
@@ -285,9 +286,21 @@
       }
     </script>
     <script>
+      window.setInterval(battery, 60000);
+      function battery(){
       navigator.getBattery().then(function(battery) {
-        document.getElementById('battery').innerHTML = battery.level*100 + "%";
+        document.getElementById('battery').innerHTML = Math.floor(battery.level*100) + "%";
       });
+      }
+      window.setInterval(time, 1000);
+      function time(){
+        var time = new Date()
+        var date =  ("0"+time.getDate()).slice(-2);
+        var hour =  ("0"+time.getHours()).slice(-2);
+        var minute =  ("0"+time.getMinutes()).slice(-2);
+        var current = date + "日" + hour + ":" + minute;
+        document.getElementById("time").innerHTML = current;
+      }
     </script>
   </body>
 </html>
