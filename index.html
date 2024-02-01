@@ -241,7 +241,6 @@
                     document.getElementById("quake").style.display = "none"
                   }
                 });
-              console.log(num2)
               if(num4 <= 2){
                 if(num4 !== 2){
                 num4 = 1
@@ -287,6 +286,7 @@
         document.getElementById('battery').innerHTML = Math.floor(battery.level*100) + "%";
       });
       }
+      battery()
     </script>
     <script>
       window.setInterval(time, 1000);
