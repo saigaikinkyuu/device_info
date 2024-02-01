@@ -47,6 +47,24 @@
     </div>
     <script>
       window.setInterval(check, 1000);
+      const tsunamiN = new Howl({
+        src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
+        autoplay: false,
+        volume: 2,
+        loop: true
+      });
+      const eewN = new Howl({
+        src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
+        autoplay: false,
+        volume: 2,
+        loop: true
+      });
+      const quakeN = new Howl({
+        src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
+        autoplay: false,
+        volume: 2,
+        loop: true
+      });
       var attend,eew,tsunami,quake,tsunamiNotify,error = "";
       var num = 0;
       var num2 = false;
@@ -110,24 +128,6 @@
                 }
               });
             if(num === 3){
-              const tsunamiN = new Howl({
-                src: 'https://saigaikinkyuu.github.io/device_info/audio/エリアメール(津波).mp3',
-                autoplay: false,
-                volume: 2,
-                loop: true
-              });
-              const eewN = new Howl({
-                src: 'https://saigaikinkyuu.github.io/device_info/audio/緊急地震速報(一般者向け).mp3',
-                autoplay: false,
-                volume: 2,
-                loop: true
-              });
-              const quakeN = new Howl({
-                src: 'https://saigaikinkyuu.github.io/device_info/audio/NHK臨時放送開始音.mp3',
-                autoplay: false,
-                volume: 2,
-                loop: true
-              });
               num = 0;
               url = 'https://api.p2pquake.net/v2/history?codes=556';
               fetch(url)
