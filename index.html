@@ -105,7 +105,6 @@
             fetch(url)
               .then(response => response.json())
               .then(data => {
-                console.log(data[0].value)
                 if(attend !== data[0].value){
                   attend = data[0].value;
                   if(data[0].value === "Yes"){
@@ -174,7 +173,6 @@
                   if(data[0]){
                     if(tsunami !== data[0].id && tsunami !== ""){
                       tsunami = data[0].id;
-                      console.log(data[0].id + "/" + tsunami)
                       if(data[0].area){
                         if(data[0].areas[0].grade === "MajorWarning"){
                             if(num2 === true){
@@ -221,13 +219,11 @@
               fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                  console.log(quake)
                   if(quake !== data[0].id && quake !== ""){
                     if(data[0].earthquake.maxScale <= 70){
                       quake = data[0].id;
                       if(num2 === true){
                         num4 = 2
-                        console.log(data[0].id + "/" + quake)
                         document.getElementById("eew").style.display = "none"
                         document.getElementById("tsunami1").style.display = "none"
                         document.getElementById("tsunami2").style.display = "none"
@@ -250,7 +246,6 @@
                 if(num4 !== 2){
                 num4 = 1
                 }
-                console.log(num4)
                 num2 = true;
               }
             }
@@ -292,6 +287,8 @@
         document.getElementById('battery').innerHTML = Math.floor(battery.level*100) + "%";
       });
       }
+    </script>
+    <script>
       window.setInterval(time, 1000);
       function time(){
         var time = new Date()
