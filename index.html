@@ -228,9 +228,15 @@
                 });
               console.log(num2)
               if(num2 === false){
-                tsunamiN.stop();
+                if(tsunamiN){
+                  tsunamiN.stop();
+                }
+                if(quakeN){
                 quakeN.stop();
+                }
+                if(eewN){
                 eewN.stop();
+                }
                 num2 = true;
               }
             }
@@ -247,7 +253,7 @@
             src: 'https://saigaikinkyuu.github.io/device_info/audio/error.mp3',
             autoplay: true,
             volume: 1,
-            loop: true
+            loop: false
           });
           errorN.play();
           function errorStop(){
